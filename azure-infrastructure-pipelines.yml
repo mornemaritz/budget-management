@@ -18,6 +18,9 @@ pool:
 stages:
 - stage: 'Provision'
 
+  variables:
+    - group: terraform-arm
+    
   jobs:
   - job: 'Terraform'
 
@@ -25,7 +28,17 @@ stages:
     - bash: terraform init
       displayName: 'Terraform init'
       workingDirectory: infrastructure
+      env:
+        ARM_SUBSCRIPTION_ID: $(arm-subscription-id)
+        ARM_CLIENT_ID:       $(arm-client-id)
+        ARM_CLIENT_SECRET:   $(arm-client-secret)
+        ARM_TENANT_ID:       $(arm-tenant-id)
 
     - bash: terraform plan -out provision.plan
       displayName: 'Terraform plan'
       workingDirectory: infrastructure
+      env:
+        ARM_SUBSCRIPTION_ID: $(arm-subscription-id)
+        ARM_CLIENT_ID:       $(arm-client-id)
+        ARM_CLIENT_SECRET:   $(arm-client-secret)
+        ARM_TENANT_ID:       $(arm-tenant-id)
