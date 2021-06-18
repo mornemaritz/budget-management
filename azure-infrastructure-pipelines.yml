@@ -29,16 +29,21 @@ stages:
       displayName: 'Terraform init'
       workingDirectory: infrastructure
       env:
-        ARM_SUBSCRIPTION_ID: $(arm-subscription-id)
-        ARM_CLIENT_ID:       $(arm-client-id)
-        ARM_CLIENT_SECRET:   $(arm-client-secret)
-        ARM_TENANT_ID:       $(arm-tenant-id)
+        ARM_SUBSCRIPTION_ID:  $(arm-subscription-id)
+        ARM_USE_MSI:          true
+        # ARM_CLIENT_ID:       $(arm-client-id)
+        # ARM_CLIENT_SECRET:   $(arm-client-secret)
+        ARM_TENANT_ID:        $(arm-tenant-id)
+        TF_VAR_test_admin_pw: "P@ssw0rd1"
 
     - bash: terraform plan -out provision.plan
       displayName: 'Terraform plan'
       workingDirectory: infrastructure
       env:
-        ARM_SUBSCRIPTION_ID: $(arm-subscription-id)
-        ARM_CLIENT_ID:       $(arm-client-id)
-        ARM_CLIENT_SECRET:   $(arm-client-secret)
-        ARM_TENANT_ID:       $(arm-tenant-id)
+        ARM_SUBSCRIPTION_ID:  $(arm-subscription-id)
+        ARM_USE_MSI:          true
+        # ARM_CLIENT_ID:       $(arm-client-id)
+        # ARM_CLIENT_SECRET:   $(arm-client-secret)
+        ARM_TENANT_ID:        $(arm-tenant-id)
+        TF_VAR_test_admin_pw: "P@ssw0rd1"
+
