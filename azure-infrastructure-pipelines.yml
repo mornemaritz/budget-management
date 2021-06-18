@@ -34,7 +34,7 @@ stages:
         ARM_CLIENT_ID:        $(arm-client-id)
         ARM_CLIENT_SECRET:    $(arm-client-secret)
         ARM_TENANT_ID:        $(arm-tenant-id)
-        TF_VAR_test_admin_pw: $(test-admin-password)
+        TF_VAR_test_admin_pw: P@ssword!
 
     - bash: terraform plan -out provision.plan
       displayName: 'Terraform plan'
@@ -44,5 +44,5 @@ stages:
         ARM_CLIENT_ID:        $(arm-client-id)
         ARM_CLIENT_SECRET:    $(arm-client-secret)
         ARM_TENANT_ID:        $(arm-tenant-id)
-        TF_VAR_test_admin_pw: $(test-admin-password)
+        TF_VAR_test_admin_pw: P@ssword!
 
